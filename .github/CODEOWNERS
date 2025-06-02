@@ -1,2 +1,2 @@
-# Default code owner for \<reponame\>
-benmont #replace for \<reponame\>
+# Default code owner for labview-usrp-examples
+* @cfe-NI @Abhverma-NI @NI-LAm

@@ -1,11 +1,11 @@
-# Contributing to \<reponame\> 
+# Contributing to labview-usrp-examples 
 
-Contributions to \<reponame\> are welcome from all!
+Contributions to labview-usrp-examples are welcome from all!
 
-\<reponame\> is managed via [git](https://git-scm.com), with the canonical upstream
-repository hosted on [GitHub](https://github.com/ni/<reponame>/).
+labview-usrp-examples is managed via [git](https://git-scm.com), with the canonical upstream
+repository hosted on [GitHub](https://github.com/ni/labview-usrp-examples/).
 
-\<reponame\> follows a pull-request model for development.  If you wish to
+labview-usrp-examples follows a pull-request model for development.  If you wish to
 contribute, you will need to create a GitHub account, fork this project, push a
 branch with your changes to your project, and then submit a pull request.
 
@@ -21,11 +21,29 @@ See [GitHub's official documentation](https://help.github.com/articles/using-pul
 
 # Getting Started
 
-- TODO: include build steps here.
+To contribute to this project, it is recommended that you follow these steps:
+- Create a branch by forking this repository on GitHub.
+- Ensure that you can run the fork on your system. If there are failures and you cannot resolve them, you can report issues through our [GitHub issues page](https://github.com/ni/labview-usrp-examples/issues).
+- Make your changes.
+- Test the code after your changes.
+- Send a GitHub Pull Request to the main repository's `main` branch. GitHub Pull Requests are the expected method of code collaboration on this project. Your Pull Request should have the following info:
+    - **Summary**: Briefly summarize your changes and the motivation behind them in one or two sentences.
+    - **Detailed Description**: Provide information about the nature of your changes.
+    - **Affected Components**: List the core components of the system that are affected by your changes.
+    - **Additional Testing/Validation**: Please specify whether there were additional (manual) tests done. Please also specify the configurations/systems used to run these tests.
+    - **Checklist**: 
+        - [ ] Revert Scripts without functional changes.
+        - [ ] (Python) Reformat your code using Black.
+        - [ ] (Python) Run Flake8 to check style guides.
+        - [ ] Document your code.
+        - [ ] Remove all debug code.
+        - [ ] Functional changes are tested.
+- Your request needs to be approved by a repository admin.
+- If your Pull Request is accepted, it will be merged to the `main` branch.
 
 # Testing
 
-- TODO: include testing steps here.
+Tests are located within the resepctive example folder.
 
 # Developer Certificate of Origin (DCO)
 
@@ -57,5 +75,5 @@ See [GitHub's official documentation](https://help.github.com/articles/using-pul
 
 (taken from [developercertificate.org](https://developercertificate.org/))
 
-See [LICENSE](https://github.com/ni/<reponame>/blob/main/LICENSE)
-for details about how \<reponame\> is licensed.
+See [LICENSE](https://github.com/ni/labview-usrp-examples/blob/main/LICENSE)
+for details about how labview-usrp-examples is licensed.
