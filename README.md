@@ -1,15 +1,34 @@
-# GitHub Repo Template
+<img src="./assets/ettus_logo.png" alt="Ettus Logo" height="80" style="vertical-align:middle" > <img src="./assets/emr_ni_logo.png" alt="EMR NI Logo" height="100" style="vertical-align:middle">
 
-GitHub Repo Template is a template for creation of open source projects made
-available on GitHub. It includes a permissive open source license, a developer
-certificate of origin, and a pull request template. This provides everything
-necessary to have a properly licensed open source project.
+# NI LabVIEW - USRP Examples
 
-## Using GitHub Repo Template
+## Overview
 
-1. Clone or download this repository.
-2. Copy its contents into your project (including the hidden .github directory). 
-3. Customize each file to suit your project's needs (including the README). Look through the files for "TODO" and \<reponame\>, and replace with content appropriate to your project.
-4. (Optional) Check out [GitHub Template Guidelines](https://github.com/cezaraugusto/github-template-guidelines) for ideas about how to customize your project.
+This repository contains various example applications which demonstrate how to 
+use NI LabVIEW with USRP devices via the USRP Hardware Driver (UHD) APIs. These
+examples serve as a starting point for developing your own LabVIEW applications
+that interact with USRP hardware, including support for RF Network-on-Chip (RFNoC)
+features. By leveraging these examples, users can quickly get up and running with 
+USRP devices in LabVIEW and extend the provided code to suit their specific needs.
 
-TODO: describe a project in detail, what it does, how to use it, etc.
+## Installation
+
+TODO
+
+## Debugging
+
+TODO
+
+## Limitations
+
+TODO
+
+## Bugs / Feature Requests
+
+To report a bug or submit a feature request, please use the
+[GitHub issues page](https://github.com/ni/labview-usrp-examples/issues).
+
+## License
+
+**labview-usrp-examples** are licensed under an MIT-style license, see
+[LICENSE](https://github.com/ni/labview-usrp-examples/blob/main/LICENSE) for more details.
