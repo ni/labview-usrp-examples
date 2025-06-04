@@ -2,7 +2,7 @@
 #
 # Copyright 2025 Ettus Research, a National Instruments Brand
 #
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-License-Identifier: MIT
 #
 """Example for Tx/Rx loopback using Python/RFNoC UHD API.
 
@@ -41,6 +41,7 @@ Refer to the below documentation for more details on
 """
 import collections
 import os
+import time
 import threading
 import numpy as np
 import uhd
@@ -101,10 +102,12 @@ class ExampleSession:
             print("found DDC block")
             self.ddc = BlockInfo(uhd.rfnoc.DdcBlockControl(self.graph.get_block(last_block_in_chain)), last_port_in_chain)
         else:
-            self.dcc = None
+            self.ddc = None
 
-        uhd.rfnoc.connect_through_blocks(
-            self.graph, self.rx_radio.get_unique_id(), self.rx_chan, last_block_in_chain, last_port_in_chain)
+        if self.ddc:
+            uhd.rfnoc.connect_through_blocks(
+                self.graph, self.rx_radio.get_unique_id(), self.rx_chan, last_block_in_chain, last_port_in_chain)
+
         self.graph.connect(last_block_in_chain, last_port_in_chain,
                       self.rx_streamer, 0)
 
@@ -128,8 +131,9 @@ class ExampleSession:
         else:
             self.duc = None
 
-        uhd.rfnoc.connect_through_blocks(
-            self.graph, last_block_out_chain, last_port_out_chain, self.tx_radio.get_unique_id(), self.tx_chan)
+        if self.duc:
+            uhd.rfnoc.connect_through_blocks(
+                self.graph, last_block_out_chain, last_port_out_chain, self.tx_radio.get_unique_id(), self.tx_chan)
         
         self.graph.connect(self.tx_streamer, 0, last_block_out_chain, last_port_out_chain)
                            
@@ -178,7 +182,7 @@ def open_session(args: str, graph_settings: any) -> ExampleSession:
     if not session:
         raise RuntimeError("Failed to open Example session")
     else:
-        print("ExampleSession opened")
+        print(f"ExampleSession opened, args: {args}")
         check_graph_settings(graph_settings)
         session.setup_graph(graph_settings)
         print("RFNoC blocks connected - Graph setup done")
@@ -319,7 +323,7 @@ def send_file(session: ExampleSession) -> None:
     sent = 0
     print(f"send file with {buffer_len} samples")
     for i in range(1000):
-        sent += send_data(session, data, buffer_len)
+        sent += send_data(session, data)
         
     send_done(session)
     print(f"done send file, sent {sent}")
@@ -334,8 +338,10 @@ if __name__ == "__main__":
     Object = lambda **kwargs: type("Object", (), kwargs)
     
     # Initializing graph settings and RF settings
+    # Note: antenna names might differ between USRP device types.
+    # Here, settings for an X410 device are preset.
     graph_settings = Object(rx_radio = 0, rx_chan = 0, tx_radio = 0, tx_chan = 0)
-    rx_settings = Object(frequency = 2e9, gain = 0, antenna = "RX2", rate = 1e6)
+    rx_settings = Object(frequency = 2e9, gain = 0, antenna = "RX1", rate = 1e6)
     tx_settings = Object(frequency = 2e9, gain = 0, antenna = "TX/RX0", rate = 1e6)
     # Open session
     session = open_session("addr=192.168.10.88", graph_settings)
@@ -354,6 +360,8 @@ if __name__ == "__main__":
     # Start Rx streaming
     overall = 0
     start_rx_stream(session)
+    # Wait to finish RX chain setup
+    time.sleep(0.1)
     i = 1000;
     while i > 0:
         # Receive data
