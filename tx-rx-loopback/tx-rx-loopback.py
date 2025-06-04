@@ -41,6 +41,7 @@ Refer to the below documentation for more details on
 """
 import collections
 import os
+import time
 import threading
 import numpy as np
 import uhd
@@ -319,7 +320,7 @@ def send_file(session: ExampleSession) -> None:
     sent = 0
     print(f"send file with {buffer_len} samples")
     for i in range(1000):
-        sent += send_data(session, data, buffer_len)
+        sent += send_data(session, data)
         
     send_done(session)
     print(f"done send file, sent {sent}")
@@ -354,6 +355,8 @@ if __name__ == "__main__":
     # Start Rx streaming
     overall = 0
     start_rx_stream(session)
+    # Wait to finish RX chain setup
+    time.sleep(0.1)
     i = 1000;
     while i > 0:
         # Receive data
