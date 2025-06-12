@@ -58,8 +58,9 @@ in the same subnet. To assign a static IP address to the USRP QSFP28 ports,
 refer to these [instructions](https://files.ettus.com/manual/page_usrp_x4xx.html#x4xx_getting_started_network_connectivity).
 Remember the IP address of the configured interface e.g. sfp0, QSFP28 0 
 (4-lane interface or lane 0). To verify network connectivity of your USRP, 
-please refer to the USRP Manual section
-[Device Identification](https://files.ettus.com/manual/page_identification.html).
+please refer to the USRP Manual section for [Device Identification](https://files.ettus.com/manual/page_identification.html).
+To prove the complete software environment including LabVIEW and Python, 
+please refer to the [check-sw-env](../check-sw-env/) example.
 
 ## Run the Example
 - Make sure that you have both the VI and Python file in the same directory.

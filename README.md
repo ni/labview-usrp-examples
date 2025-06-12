@@ -22,6 +22,7 @@ examples, please refer to the documentation located in each example folder.
 
 ## List of Examples
 
+- [check-sw-env](./check-sw-env/) - Example for checking the Software Environment
 - [tx-rx-loopback](./tx-rx-loopback/) - Example for Tx/Rx Loopback using Python/RFNoC UHD API
 
 ## Architecture
@@ -122,6 +123,10 @@ please refer to the installation instructions at https://www.python.org and
 also make sure the Python version satisfies the dependency requirement. 
 The USRP Hardware Driver (UHD) needs to be installed following 
 these instructions from the [USRP Manual](https://files.ettus.com/manual/page_install.html#install_win).
+
+### Verification
+
+To verify successful installation, please refer to the [check-sw-env](./check-sw-env/) example.
 
 ## Debugging
 
