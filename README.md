@@ -106,7 +106,7 @@ More specific hardware-related information can be found within the respective
 
 ### Dependencies
 - [NI LabVIEW](https://www.ni.com/en/shop/labview.html) 
-2024 or newer (2025 Q3, 64 bit recommended)
+2025 Q3 or newer (64 bit recommended)
 - [Python](https://www.python.org) 3.10 or 3.12 with the same bitness as LabVIEW
 - [USRP Hardware Driver (UHD)](https://files.ettus.com/binaries/uhd/latest_release/) 
 4.8.0 or newer (binary Windows installer)
@@ -128,6 +128,12 @@ these instructions from the [USRP Manual](https://files.ettus.com/manual/page_in
 
 To verify successful installation, please refer to the [check-sw-env](./check-sw-env/) example.
 
+### Troubleshooting
+Schedule Windows Updates outside of experiment times, or temporarily pause 
+updates if necessary, to avoid interruptions. If troubleshooting connectivity 
+issues, you may temporarily disable firewall and antivirus software, but be 
+sure to re-enable them promptly to maintain system security.
+
 ## Debugging
 
 - Turn LV Python console on by adding the following key to the LabVIEW.ini
@@ -137,10 +143,6 @@ this [Link](https://knowledge.ni.com/KnowledgeArticleDetails?id=kA03q0000019hP1C
 
 ## Limitations
 
-- **LabVIEW** - Currently Python object refnum can only be used 2^20 times per VI execution 
-[(reference)](https://forums.ni.com/t5/LabVIEW/Python-object-refnum-can-only-be-used-2-20-times/m-p/4404515).
-This means for instance, you can execute a while loop that calls a Python Node 
-which uses a object refernce only 2^20 times before it returns with an error.
 - **Throughput, Host to USRP** - The IQ data streaming throughput between LV 
 host application and USRP device is limited to a few MS/s only.
 
